@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPartTypesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="header">
+                <div class="mainheader">
+                    <div class="navbarcontainer">
+                      <a id="left" href="/Lenovo/faces/dashboard.xhtml" ><img src="../resources/images/lenovo.png" alt="Logo" /></a>
+                      <h:form>
+                        <h:commandLink action="#{login.logout()}" value="Sign Out" class="signout" />
+                      </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        <ui:define name="rightdashboard">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form styleClass="viewtable">
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPartTypesLabel_parttypeCode}"/>
+                    <h:outputText value="#{partTypesController.selected.parttypeCode}" title="#{bundle.ViewPartTypesTitle_parttypeCode}"/>
+                    <h:outputText value="#{bundle.ViewPartTypesLabel_parttypeDescription}"/>
+                    <h:outputText value="#{partTypesController.selected.parttypeDescription}" title="#{bundle.ViewPartTypesTitle_parttypeDescription}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{partTypesController.destroyAndView}" value="#{bundle.ViewPartTypesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPartTypesEditLink}"/>
+                <br />
+                <h:commandLink action="#{partTypesController.prepareCreate}" value="#{bundle.ViewPartTypesCreateLink}" />
+                <br />
+                <h:commandLink action="#{partTypesController.prepareList}" value="#{bundle.ViewPartTypesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPartTypesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+        <ui:define name="footer">
+            
+        </ui:define>
+    </ui:composition>
+
+</html>

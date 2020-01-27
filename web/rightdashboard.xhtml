@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <div class="right-dashboard">
+                        <h:form styleClass="jsfcrud_list_form">
+                            <h3>Suppliers</h3>
+                        <h:panelGroup id="messagePanel" layout="block">
+                            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                        </h:panelGroup>
+                        <h:outputText escape="false" value="#{bundle.ListSuppliersEmpty}" rendered="#{suppliersController.items.rowCount == 0}"/>
+                        <h:panelGroup rendered="#{suppliersController.items.rowCount > 0}">
+                            <h:outputText value="#{suppliersController.pagination.pageFirstItem + 1}..#{suppliersController.pagination.pageLastItem + 1}/#{suppliersController.pagination.itemsCount}"/>&nbsp;
+                            <h:commandLink action="#{suppliersController.previous}" value="#{bundle.Previous} #{suppliersController.pagination.pageSize}" rendered="#{suppliersController.pagination.hasPreviousPage}"/>&nbsp;
+                            <h:commandLink action="#{suppliersController.next}" value="#{bundle.Next} #{suppliersController.pagination.pageSize}" rendered="#{suppliersController.pagination.hasNextPage}"/>&nbsp;
+                            <h:dataTable value="#{suppliersController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListSuppliersTitle_supplierRef}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.supplierRef}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListSuppliersTitle_orderDate}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.orderDate}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListSuppliersTitle_supplierAddress}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.supplierAddress}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListSuppliersTitle_supplierTel}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.supplierTel}"/>
+                                </h:column>
+                                </h:dataTable>
+                            </h:panelGroup>
+                        </h:form>
+                        
+                        <br></br><br></br>
+                        
+                        <h:form styleClass="jsfcrud_list_form">
+                            <h3>Customers</h3>
+                        <h:panelGroup id="messagePanel" layout="block">
+                            <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                        </h:panelGroup>
+                        <h:outputText escape="false" value="#{bundle.ListCustomersEmpty}" rendered="#{customersController.items.rowCount == 0}"/>
+                        <h:panelGroup rendered="#{customersController.items.rowCount > 0}">
+                            <h:outputText value="#{customersController.pagination.pageFirstItem + 1}..#{customersController.pagination.pageLastItem + 1}/#{customersController.pagination.itemsCount}"/>&nbsp;
+                            <h:commandLink action="#{customersController.previous}" value="#{bundle.Previous} #{customersController.pagination.pageSize}" rendered="#{customersController.pagination.hasPreviousPage}"/>&nbsp;
+                            <h:commandLink action="#{customersController.next}" value="#{bundle.Next} #{customersController.pagination.pageSize}" rendered="#{customersController.pagination.hasNextPage}"/>&nbsp;
+                            <h:dataTable value="#{customersController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListCustomersTitle_customerRef}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.customerRef}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListCustomersTitle_customerFirstname}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.customerFirstname}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListCustomersTitle_customerLastname}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.customerLastname}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListCustomersTitle_customerAddress}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.customerAddress}"/>
+                                </h:column>
+                            </h:dataTable>
+                        </h:panelGroup>
+                    </h:form>
+                      
+                        <br></br><br></br>
+                        
+                    <h:form styleClass="jsfcrud_list_form">
+                            <h3>Part Type</h3>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListPartTypesEmpty}" rendered="#{partTypesController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{partTypesController.items.rowCount > 0}">
+                        <h:outputText value="#{partTypesController.pagination.pageFirstItem + 1}..#{partTypesController.pagination.pageLastItem + 1}/#{partTypesController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{partTypesController.previous}" value="#{bundle.Previous} #{partTypesController.pagination.pageSize}" rendered="#{partTypesController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{partTypesController.next}" value="#{bundle.Next} #{partTypesController.pagination.pageSize}" rendered="#{partTypesController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{partTypesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPartTypesTitle_parttypeCode}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.parttypeCode}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPartTypesTitle_parttypeDescription}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.parttypeDescription}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                </h:form>
+                     
+                        <br></br><br></br>
+                        
+                        <h:form styleClass="jsfcrud_list_form">
+                            <h3>Parts</h3>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPartsEmpty}" rendered="#{partsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{partsController.items.rowCount > 0}">
+                    <h:outputText value="#{partsController.pagination.pageFirstItem + 1}..#{partsController.pagination.pageLastItem + 1}/#{partsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{partsController.previous}" value="#{bundle.Previous} #{partsController.pagination.pageSize}" rendered="#{partsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{partsController.next}" value="#{bundle.Next} #{partsController.pagination.pageSize}" rendered="#{partsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{partsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartsTitle_partNo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.partNo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartsTitle_partName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.partName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartsTitle_partUnit}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.partUnit}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartsTitle_stockLevel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.stockLevel}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartsTitle_minStockLevel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.minStockLevel}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartsTitle_costPrice}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.costPrice}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartsTitle_salesPrices}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.salesPrices}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartsTitle_loaction}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.loaction}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPartsTitle_partsNotes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.partsNotes}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+            </h:form>
+                        
+                        <br></br><br></br>
+                        
+                        <h:form styleClass="jsfcrud_list_form">
+                            <h3>Orders</h3>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListOrdersEmpty}" rendered="#{ordersController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{ordersController.items.rowCount > 0}">
+                    <h:outputText value="#{ordersController.pagination.pageFirstItem + 1}..#{ordersController.pagination.pageLastItem + 1}/#{ordersController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{ordersController.previous}" value="#{bundle.Previous} #{ordersController.pagination.pageSize}" rendered="#{ordersController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{ordersController.next}" value="#{bundle.Next} #{ordersController.pagination.pageSize}" rendered="#{ordersController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{ordersController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrdersTitle_orderNo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.orderNo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrdersTitle_orderDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.orderDate}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+            </h:form>
+                        
+                        <br></br><br></br>
+                       
+                            <h:form styleClass="jsfcrud_list_form">
+                            <h3>Purchase Orders</h3>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPurchaseOrdersEmpty}" rendered="#{purchaseOrdersController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{purchaseOrdersController.items.rowCount > 0}">
+                    <h:outputText value="#{purchaseOrdersController.pagination.pageFirstItem + 1}..#{purchaseOrdersController.pagination.pageLastItem + 1}/#{purchaseOrdersController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{purchaseOrdersController.previous}" value="#{bundle.Previous} #{purchaseOrdersController.pagination.pageSize}" rendered="#{purchaseOrdersController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{purchaseOrdersController.next}" value="#{bundle.Next} #{purchaseOrdersController.pagination.pageSize}" rendered="#{purchaseOrdersController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{purchaseOrdersController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPurchaseOrdersTitle_PONo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.PONo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPurchaseOrdersTitle_PODate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.PODate}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPurchaseOrdersTitle_POQty}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.POQty}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+            </h:form>
+                        
+            </div>
+        </ui:composition>
+    </h:body>
+</html>
+

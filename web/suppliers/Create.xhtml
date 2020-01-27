@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSuppliersTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="header">
+                <div class="mainheader">
+                    <div class="navbarcontainer">
+                      <a id="left" href="/Lenovo/faces/dashboard.xhtml" ><img src="../resources/images/lenovo.png" alt="Logo" /></a>
+                      <h:form>
+                        <h:commandLink action="#{login.logout()}" value="Sign Out" class="signout" />
+                      </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        <ui:define name="rightdashboard">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form styleClass="create">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSuppliersLabel_supplierRef}" for="supplierRef" />
+                    <h:inputText styleClass="input" id="supplierRef" value="#{suppliersController.selected.supplierRef}" title="#{bundle.CreateSuppliersTitle_supplierRef}" />
+                    <h:outputLabel value="#{bundle.CreateSuppliersLabel_orderDate}" for="orderDate" />
+                    <h:inputText styleClass="input" id="orderDate" value="#{suppliersController.selected.orderDate}" title="#{bundle.CreateSuppliersTitle_orderDate}" />
+                    <h:outputLabel value="#{bundle.CreateSuppliersLabel_supplierAddress}" for="supplierAddress" />
+                    <h:inputText styleClass="input" id="supplierAddress" value="#{suppliersController.selected.supplierAddress}" title="#{bundle.CreateSuppliersTitle_supplierAddress}" />
+                    <h:outputLabel value="#{bundle.CreateSuppliersLabel_supplierTel}" for="supplierTel" />
+                    <h:inputText styleClass="input" id="supplierTel" value="#{suppliersController.selected.supplierTel}" title="#{bundle.CreateSuppliersTitle_supplierTel}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{suppliersController.create}" value="#{bundle.CreateSuppliersSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{suppliersController.prepareList}" value="#{bundle.CreateSuppliersShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSuppliersIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

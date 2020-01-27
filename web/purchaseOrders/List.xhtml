@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPurchaseOrdersTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="header">
+                <div class="mainheader">
+                    <div class="navbarcontainer">
+                      <a id="left" href="/Lenovo/faces/dashboard.xhtml" ><img src="../resources/images/lenovo.png" alt="Logo" /></a>
+                      <h:form>
+                        <h:commandLink action="#{login.logout()}" value="Sign Out" class="signout" />
+                      </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        <ui:define name="rightdashboard">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPurchaseOrdersEmpty}" rendered="#{purchaseOrdersController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{purchaseOrdersController.items.rowCount > 0}">
+                    <h:outputText value="#{purchaseOrdersController.pagination.pageFirstItem + 1}..#{purchaseOrdersController.pagination.pageLastItem + 1}/#{purchaseOrdersController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{purchaseOrdersController.previous}" value="#{bundle.Previous} #{purchaseOrdersController.pagination.pageSize}" rendered="#{purchaseOrdersController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{purchaseOrdersController.next}" value="#{bundle.Next} #{purchaseOrdersController.pagination.pageSize}" rendered="#{purchaseOrdersController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{purchaseOrdersController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPurchaseOrdersTitle_PONo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.PONo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPurchaseOrdersTitle_PODate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.PODate}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPurchaseOrdersTitle_POQty}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.POQty}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{purchaseOrdersController.prepareView}" value="#{bundle.ListPurchaseOrdersViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{purchaseOrdersController.prepareEdit}" value="#{bundle.ListPurchaseOrdersEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{purchaseOrdersController.destroy}" value="#{bundle.ListPurchaseOrdersDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{purchaseOrdersController.prepareCreate}" value="#{bundle.ListPurchaseOrdersCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPurchaseOrdersIndexLink}"/>
+            </h:form>
+        </ui:define>
+        <ui:define name="footer">
+            
+        </ui:define>
+    </ui:composition>
+
+</html>

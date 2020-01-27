@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPurchaseOrdersTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="header">
+                <div class="mainheader">
+                    <div class="navbarcontainer">
+                      <a id="left" href="/Lenovo/faces/dashboard.xhtml" ><img src="../resources/images/lenovo.png" alt="Logo" /></a>
+                      <h:form>
+                        <h:commandLink action="#{login.logout()}" value="Sign Out" class="signout" />
+                      </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        <ui:define name="rightdashboard">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form styleClass="viewtable">
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPurchaseOrdersLabel_PONo}"/>
+                    <h:outputText value="#{purchaseOrdersController.selected.PONo}" title="#{bundle.ViewPurchaseOrdersTitle_PONo}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrdersLabel_PODate}"/>
+                    <h:outputText value="#{purchaseOrdersController.selected.PODate}" title="#{bundle.ViewPurchaseOrdersTitle_PODate}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrdersLabel_POQty}"/>
+                    <h:outputText value="#{purchaseOrdersController.selected.POQty}" title="#{bundle.ViewPurchaseOrdersTitle_POQty}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{purchaseOrdersController.destroyAndView}" value="#{bundle.ViewPurchaseOrdersDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPurchaseOrdersEditLink}"/>
+                <br />
+                <h:commandLink action="#{purchaseOrdersController.prepareCreate}" value="#{bundle.ViewPurchaseOrdersCreateLink}" />
+                <br />
+                <h:commandLink action="#{purchaseOrdersController.prepareList}" value="#{bundle.ViewPurchaseOrdersShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPurchaseOrdersIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+        <ui:define name="footer">
+            
+        </ui:define>
+    </ui:composition>
+
+</html>

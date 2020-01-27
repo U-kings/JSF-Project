@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPartsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="header">
+                <div class="mainheader">
+                    <div class="navbarcontainer">
+                      <a id="left" href="/Lenovo/faces/dashboard.xhtml" ><img src="../resources/images/lenovo.png" alt="Logo" /></a>
+                      <h:form>
+                        <h:commandLink action="#{login.logout()}" value="Sign Out" class="signout" />
+                      </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        <ui:define name="rightdashboard">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form styleClass="viewtable">
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPartsLabel_partNo}"/>
+                    <h:outputText value="#{partsController.selected.partNo}" title="#{bundle.ViewPartsTitle_partNo}"/>
+                    <h:outputText value="#{bundle.ViewPartsLabel_partName}"/>
+                    <h:outputText value="#{partsController.selected.partName}" title="#{bundle.ViewPartsTitle_partName}"/>
+                    <h:outputText value="#{bundle.ViewPartsLabel_partUnit}"/>
+                    <h:outputText value="#{partsController.selected.partUnit}" title="#{bundle.ViewPartsTitle_partUnit}"/>
+                    <h:outputText value="#{bundle.ViewPartsLabel_stockLevel}"/>
+                    <h:outputText value="#{partsController.selected.stockLevel}" title="#{bundle.ViewPartsTitle_stockLevel}"/>
+                    <h:outputText value="#{bundle.ViewPartsLabel_minStockLevel}"/>
+                    <h:outputText value="#{partsController.selected.minStockLevel}" title="#{bundle.ViewPartsTitle_minStockLevel}"/>
+                    <h:outputText value="#{bundle.ViewPartsLabel_costPrice}"/>
+                    <h:outputText value="#{partsController.selected.costPrice}" title="#{bundle.ViewPartsTitle_costPrice}"/>
+                    <h:outputText value="#{bundle.ViewPartsLabel_salesPrices}"/>
+                    <h:outputText value="#{partsController.selected.salesPrices}" title="#{bundle.ViewPartsTitle_salesPrices}"/>
+                    <h:outputText value="#{bundle.ViewPartsLabel_loaction}"/>
+                    <h:outputText value="#{partsController.selected.loaction}" title="#{bundle.ViewPartsTitle_loaction}"/>
+                    <h:outputText value="#{bundle.ViewPartsLabel_partsNotes}"/>
+                    <h:outputText value="#{partsController.selected.partsNotes}" title="#{bundle.ViewPartsTitle_partsNotes}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{partsController.destroyAndView}" value="#{bundle.ViewPartsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPartsEditLink}"/>
+                <br />
+                <h:commandLink action="#{partsController.prepareCreate}" value="#{bundle.ViewPartsCreateLink}" />
+                <br />
+                <h:commandLink action="#{partsController.prepareList}" value="#{bundle.ViewPartsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPartsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+        <ui:define name="footer">
+            
+        </ui:define>
+    </ui:composition>
+
+</html>

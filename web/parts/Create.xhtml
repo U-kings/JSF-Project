@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePartsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="header">
+                <div class="mainheader">
+                    <div class="navbarcontainer">
+                      <a id="left" href="/Lenovo/faces/dashboard.xhtml" ><img src="../resources/images/lenovo.png" alt="Logo" /></a>
+                      <h:form>
+                        <h:commandLink action="#{login.logout()}" value="Sign Out" class="signout" />
+                      </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        <ui:define name="rightdashboard">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form styleClass="create">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePartsLabel_partNo}" for="partNo" />
+                    <h:inputText styleClass="input" id="partNo" value="#{partsController.selected.partNo}" title="#{bundle.CreatePartsTitle_partNo}" />
+                    <h:outputLabel value="#{bundle.CreatePartsLabel_partName}" for="partName" />
+                    <h:inputText styleClass="input" id="partName" value="#{partsController.selected.partName}" title="#{bundle.CreatePartsTitle_partName}" />
+                    <h:outputLabel value="#{bundle.CreatePartsLabel_partUnit}" for="partUnit" />
+                    <h:inputText styleClass="input" id="partUnit" value="#{partsController.selected.partUnit}" title="#{bundle.CreatePartsTitle_partUnit}" />
+                    <h:outputLabel value="#{bundle.CreatePartsLabel_stockLevel}" for="stockLevel" />
+                    <h:inputText styleClass="input" id="stockLevel" value="#{partsController.selected.stockLevel}" title="#{bundle.CreatePartsTitle_stockLevel}" />
+                    <h:outputLabel value="#{bundle.CreatePartsLabel_minStockLevel}" for="minStockLevel" />
+                    <h:inputText styleClass="input" id="minStockLevel" value="#{partsController.selected.minStockLevel}" title="#{bundle.CreatePartsTitle_minStockLevel}" />
+                    <h:outputLabel value="#{bundle.CreatePartsLabel_costPrice}" for="costPrice" />
+                    <h:inputText styleClass="input" id="costPrice" value="#{partsController.selected.costPrice}" title="#{bundle.CreatePartsTitle_costPrice}" />
+                    <h:outputLabel value="#{bundle.CreatePartsLabel_salesPrices}" for="salesPrices" />
+                    <h:inputText styleClass="input" id="salesPrices" value="#{partsController.selected.salesPrices}" title="#{bundle.CreatePartsTitle_salesPrices}" />
+                    <h:outputLabel value="#{bundle.CreatePartsLabel_loaction}" for="loaction" />
+                    <h:inputText styleClass="input" id="loaction" value="#{partsController.selected.loaction}" title="#{bundle.CreatePartsTitle_loaction}" />
+                    <h:outputLabel value="#{bundle.CreatePartsLabel_partsNotes}" for="partsNotes" />
+                    <h:inputText styleClass="input" id="partsNotes" value="#{partsController.selected.partsNotes}" title="#{bundle.CreatePartsTitle_partsNotes}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{partsController.create}" value="#{bundle.CreatePartsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{partsController.prepareList}" value="#{bundle.CreatePartsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePartsIndexLink}"/>
+            </h:form>
+        </ui:define>
+        <ui:define name="footer">
+            
+        </ui:define>
+    </ui:composition>
+
+</html>
